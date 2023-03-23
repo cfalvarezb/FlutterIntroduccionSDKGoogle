@@ -23,6 +23,8 @@ class CardPage extends StatelessWidget {
   
   Widget _cardTipo1() {
       return Card(
+          elevation: 10.0,
+          shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20.0) ),
           child: Column(
             children: <Widget>[
               ListTile(
@@ -49,10 +51,11 @@ class CardPage extends StatelessWidget {
   }
   
   Widget _cardTipo2() {
-      return Card(
+      final card =  Container(
+        //clipBehavior: Clip.antiAlias,
         child: Column(
           children: <Widget>[
-            FadeInImage(
+            const FadeInImage(
               placeholder: AssetImage('assets/jar-loading.gif'), 
               image: NetworkImage(
                 'https://www.wallpapers13.com/wp-content/uploads/2019/09/Lake-in-Guatemala-Lake-Atitl%C3%A1n-large-volcanic-crater-in-the-southwestern-highlands-of-guatemala-photo-landscape-4K-Ultra-HD-Wallpaper-for-Desktop-840x525.jpg'
@@ -73,6 +76,24 @@ class CardPage extends StatelessWidget {
               child: Text('i do not know what put'),
             )
           ]),
+      );
+
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.0),
+          boxShadow: const <BoxShadow>[
+            BoxShadow(
+              color: Colors.blue,
+              blurRadius: 5.0,
+              spreadRadius: 2.0,
+              offset: Offset(2.0, 10.0)
+            )
+          ]
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(30.0),
+          child: card
+        )
       );
   }
 }
